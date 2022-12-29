@@ -18,10 +18,10 @@ def get_requirements()->List[str]:    # Provides information to developer that t
 
 
 setup(
-    name="sensor",
-    version="0.0.2",
-    author="ineuron",
-    author_email="avnish@ineuron.ai",
+    name = "sensor",
+    version = "0.0.1",
+    author = "SaiSubhasish",
+    author_email = "saisubhasishrout777@gmail.com",
     packages = find_packages(),       # find_packages() will convert the folder with __init__.py file to library/package
     install_requires=get_requirements())   # Searches and stores the list of required libraries which are needed to be inststalled to run this project
 
