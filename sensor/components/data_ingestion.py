@@ -1,7 +1,6 @@
 
 from sensor import utils
-from sensor.entity import config_entity
-from sensor.entity import artifact_entity
+from sensor.entity import config_entity, artifact_entity
 from sensor.exception import SensorException
 from sensor.logger import logging
 import os,sys
@@ -50,7 +49,7 @@ class DataIngestion:
 
             logging.info("split dataset into train and test set")
             # split dataset into train and test set
-            train_df,test_df = train_test_split(df,test_size=self.data_ingestion_config.test_size)
+            train_df,test_df = train_test_split(df,test_size=self.data_ingestion_config.test_size, random_state=42)
             
             logging.info("create dataset directory folder if not available")
             # Create dataset directory folder if not available
