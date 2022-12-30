@@ -86,11 +86,11 @@ class ModelTrainer:
                 raise Exception(f"Train and test score diff: {diff} is more than overfitting threshold {self.model_trainer_config.overfitting_threshold}")
 
             # Saving trained model to utils if it passes
-            logging.info(f"Saving mode object")
+            logging.info("Saving mode object")
             utils.save_object(file_path=self.model_trainer_config.model_path, obj=model)
 
             # Prepare artifact
-            logging.info(f"Prepare the artifact")
+            logging.info("Prepare the artifact")
             model_trainer_artifact  = artifact_entity.ModelTrainerArtifact(model_path=self.model_trainer_config.model_path, 
             f1_train_score=f1_train_score, f1_test_score=f1_test_score)
             logging.info(f"Model trainer artifact: {model_trainer_artifact}")
