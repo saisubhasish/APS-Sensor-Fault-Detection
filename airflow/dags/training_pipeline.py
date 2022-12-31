@@ -14,7 +14,7 @@ with DAG(                         # Directed Acyclic Graph
     # [END default_args]
     description='Sensor Fault Detection',
     schedule_interval="@weekly",  # Pipeline will run weekly basis
-    start_date=pendulum.datetime(2022, 12, 30, tz="UTC"),   # Start date for pipeline
+    start_date=pendulum.datetime(2023, 1, 1, tz="UTC"),   # Start date for pipeline
     catchup=False,              # Flag relation to previous run
     tags=['example'],           # list of string
 ) as dag:
