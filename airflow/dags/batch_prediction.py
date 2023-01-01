@@ -13,7 +13,7 @@ with DAG(
     # [END default_args]
     description='Sensor Fault Detection',
     schedule_interval="@weekly",
-    start_date=pendulum.datetime(2022, 12, 11, tz="UTC"),
+    start_date=pendulum.datetime(2023, 1, 1, tz="UTC"),
     catchup=False,
     tags=['example'],
 ) as dag:
@@ -57,4 +57,4 @@ with DAG(
 
     )
 
-    download_input_files >> generate_prediction_files >> upload_prediction_files
+    download_input_files >> generate_prediction_files >> upload_prediction_files   # Flow of execution
