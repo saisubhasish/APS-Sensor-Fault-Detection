@@ -8,7 +8,7 @@ from sensor.exception import SensorException
 class ModelResolver:
     """
     This class is helping us to get the location of required updated files (where to save the model 
-    and from where to load the model) in the pipeline
+    and from where to load the model) for prediction pipeline
     """
     def __init__(self,model_registry:str = "saved_models",
                 transformer_dir_name="transformer",

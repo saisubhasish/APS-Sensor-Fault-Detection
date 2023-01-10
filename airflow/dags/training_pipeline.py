@@ -20,14 +20,14 @@ with DAG(                         # Directed Acyclic Graph
 ) as dag:
 
     
-    def training(**kwargs):
+    def training(**kwargs):                                                      # Defining function for training pipeline
         from sensor.pipeline.training_pipeline import start_training_pipeline    # Starting training pipeline from sensor
         start_training_pipeline()
     
-    def sync_artifact_to_s3_bucket(**kwargs):                                    # Storing artifacts and models to S3 bucket
+    def sync_artifact_to_s3_bucket(**kwargs):                                    # Defining function to Store artifacts and models to S3 bucket
         bucket_name = os.getenv("BUCKET_NAME")
-        os.system(f"aws s3 sync /app/artifact s3://{bucket_name}/artifacts")
-        os.system(f"aws s3 sync /app/saved_models s3://{bucket_name}/saved_models")
+        os.system(f"aws s3 sync /app/artifact s3://{bucket_name}/artifacts")      # Storing artifacts to in buctet
+        os.system(f"aws s3 sync /app/saved_models s3://{bucket_name}/saved_models") # Saving models to bucket
 
     training_pipeline  = PythonOperator(               # We are using python operator to call training function
             task_id="train_pipeline",                  # so that when we will run this code from airflow pipeline 

@@ -29,7 +29,7 @@ class DataTransformation:
 
 
     @classmethod
-    def get_data_transformer_object(cls)->Pipeline:
+    def get_data_transformer_object(cls)->Pipeline:     # Attributes of this class will be same across all the object 
         try:
             simple_imputer = SimpleImputer(strategy='constant', fill_value=0)
             robust_scaler =  RobustScaler()
@@ -61,14 +61,14 @@ class DataTransformation:
             label_encoder.fit(target_feature_train_df)
 
             # Transformation on target columns
-            target_feature_train_arr = label_encoder.transform(target_feature_train_df)
+            target_feature_train_arr = label_encoder.transform(target_feature_train_df)   # Returns array type output
             target_feature_test_arr = label_encoder.transform(target_feature_test_df)
 
             transformation_pipleine = DataTransformation.get_data_transformer_object()
             transformation_pipleine.fit(input_feature_train_df)
 
             # Transforming input features
-            input_feature_train_arr = transformation_pipleine.transform(input_feature_train_df)
+            input_feature_train_arr = transformation_pipleine.transform(input_feature_train_df)  # Transformaing input features to array
             input_feature_test_arr = transformation_pipleine.transform(input_feature_test_df)
             
             # Handling imbalanced data by resampling

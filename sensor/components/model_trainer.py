@@ -6,6 +6,7 @@ import os,sys
 from xgboost import XGBClassifier
 from sensor import utils
 from sklearn.metrics import f1_score
+from sklearn.model_selection import GridSearchCV
 
 
 
@@ -22,14 +23,23 @@ class ModelTrainer:
             raise SensorException(e, sys)
 
 
-    def fine_tune(self):
+    def fine_tune(self,x,y):
         """
         Hyper parameter tuning
         """
         try:
-            #Wite code for Grid Search CV
-            pass
+            # Defining parameters
+            parameters = {'max_depth': range (2, 10, 1),
+                        'n_estimators': [100, 200, 300],
+                        'learning_rate': [0.01, 0.03, 0.05]} 
             
+            xgb_clf = XGBClassifier(objective= 'binary:logistic', nthread=4, seed=42)
+
+            grid_search_xgb = GridSearchCV(estimator=xgb_clf, param_grid=parameters, cv=5, n_jobs=-1, verbose=2)
+            grid_search_xgb = grid_search_xgb.fit(x,y)
+            BestParams = grid_search_xgb.best_params_
+            
+            return BestParams
 
         except Exception as e:
             raise SensorException(e, sys)
@@ -58,6 +68,11 @@ class ModelTrainer:
             logging.info("Splitting input and target feature from both train and test arr.")
             x_train,y_train = train_arr[:,:-1],train_arr[:,-1]
             x_test,y_test = test_arr[:,:-1],test_arr[:,-1]
+
+            #logging.info('Hyperparameter tuning using GridSearchCV')
+            #Best_Params = self.fine_tune(x=x_train,y=y_train)
+            #print(f"The best parameters for XGBoostClassifier are : {Best_Params}")
+            #logging.info(f"The best parameters for XGBoostClassifier are : {Best_Params}")
 
             logging.info("Train the model")
             model = self.train_model(x=x_train,y=y_train)
