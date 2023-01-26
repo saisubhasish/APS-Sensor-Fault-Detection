@@ -1,4 +1,5 @@
 
+# Scania Truck: APS Sensor Fault Detection
 ![Scania](https://user-images.githubusercontent.com/102937478/214884854-cbc811cf-7019-425b-a208-d2dc00c7090b.png)
 
 ### Step 1 - Install the requirements
