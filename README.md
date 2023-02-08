@@ -91,6 +91,7 @@ Where the false prediction is causing vahicle breakdown and maintaince cost is m
 3. Machine learning algorithms
 4. Docker
 5. MongoDB
+6. Fast API
 
 ## Infrastructure Required.
 
@@ -98,7 +99,7 @@ Where the false prediction is causing vahicle breakdown and maintaince cost is m
 2. AWS EC2
 3. AWS ECR
 4. Git Actions
-5. Terraform
+5. Airflow
 
 ## How to run?
 Before we run the project, make sure that you are having MongoDB in your local system, with Compass since we are using MongoDB for data storage. You also need AWS account to access the service like S3, ECR and EC2 instances.
@@ -112,7 +113,10 @@ Before we run the project, make sure that you are having MongoDB in your local s
 
 
 ## Deployment Archietecture
-![image](https://user-images.githubusercontent.com/57321948/193536973-4530fe7d-5509-4609-bfd2-cd702fc82423.png)
+![Screenshot_19-overlay](https://user-images.githubusercontent.com/102937478/216320740-d0494ad2-c99c-4a1b-91e3-01b86c0deaee.png)
+
+![image](https://user-images.githubusercontent.com/102937478/216247497-0d54dd7b-3916-4670-8465-3f1fcf6e0a9a.png)
+
 
 
 ### Step 1: Clone the repository
